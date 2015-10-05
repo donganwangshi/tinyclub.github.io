@@ -1,6 +1,6 @@
 ---
 theme :
-name : tinylab.org
+  name : tinylab.org
 layout: default
 ---
 {% include JB/setup %}
