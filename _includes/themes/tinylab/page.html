@@ -1,0 +1,20 @@
+<div id="article" class="section">
+    <h1 class="font-size-huge">{{ page.title }}</h1>
+    <p>{% if page.tagline %}{{ page.tagline }}{% endif %}</p>
+
+    <div class="separator size-0"></div>
+
+    <div id="articleContent">
+        {% if page.group != "home" and (page.author != null or page.comments == null)) %}
+        {% include widgets/page_header %}
+        {% endif %}
+
+        <div {% if page.group != "home" %} id="main_content_container" {% endif %}>
+            {{ content }}
+        </div>
+    </div>
+</div>
+
+<div id="comments">
+  {% include JB/comments %}
+</div>

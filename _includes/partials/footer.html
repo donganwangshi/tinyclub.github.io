@@ -1,0 +1,8 @@
+<div id="footer" class="container section text-center">
+    <p class="color-spry-grey-mine font-size-small">
+        &copy; {{ site.start }} ~ {{ site.time | date: '%Y' }} {{ site.title }}
+       {% for footer in site.data.footer %}
+       | <a class="color-spry-grey-mine font-size-small" href="{{ footer.url }}">{{ footer.text }}</a>
+       {% endfor %}
+    </p>
+</div>

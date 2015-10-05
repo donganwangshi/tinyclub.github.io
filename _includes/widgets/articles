@@ -28,7 +28,7 @@
     {% endif %}
 
     <h2>
-        <a class="tooltip article" href="{{ article.url }}">{% if article.desc %}<span>{{ article.desc }}</span>{% endif %}{{ article.title }}</a>
+        <a class="tooltip article font-size-large" href="{{ article.url }}">{% if article.desc %}<span>{{ article.desc }}</span>{% endif %}{{ article.title }}</a>
     </h2>
 
     {% if article.group %}{% assign group = article.group %}{% else %}{% assign group = "original" %}{% endif %}
