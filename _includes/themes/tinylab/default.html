@@ -71,13 +71,15 @@
     </head>
 
     <body>
+        {% include partials/float-box.html %}
+
         <div id="top-wrap">
             {% include partials/navbar.html %}
         </div>
 
         <div class="space size-1"></div>
 
-        <div class="container row">
+        <div id="main-wrap" class="container row">
             <div id="content" class="column s24 m16 l18 xl18">
                 {{ content }}
             </div>
