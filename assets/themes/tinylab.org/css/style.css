@@ -344,6 +344,7 @@ a:active {
     margin-bottom: 5px
 }
 #navbar ul {
+    margin-top: 2px;
     list-style: none
 }
 #navbar ul li {
@@ -387,7 +388,7 @@ a:active {
 }
 
 #sidebar #fixed-container {
-   width: 230px;
+    width: 230px;
 }
 
 #sidebar section a,
@@ -476,14 +477,16 @@ article header {
     white-space: nowrap
 }
 article header a {
-    color: #345
+    color: #345;
+    font-size: 105%;
 }
 article header h1,
 article header h2 {
     float: left
 }
+
 article header h1 {
-    font-size: 130%;
+    font-size: 210%;
     font-weight: 500;
     margin-bottom: 10px
 }
@@ -505,44 +508,59 @@ article section h5 {
     font-weight: 500
 }
 article section h1 {
-    font-size: 120%
+    font-size: 180%
 }
 article section h2 {
     color: #a33;
-    font-size: 115%
+    font-size: 160%
 }
 article section h3 {
     color: #33a;
-    font-size: 110%
+    font-size: 130%
 }
 article section h4 {
     color: #3a3;
-    font-size: 107%
+    font-size: 110%
 }
 article section h5 {
     color: #333;
     font-size: 105%
 }
-section footer p,
-article section p {
+
+section footer p {
     text-indent: 1.16em;
     font-size: 100%;
     line-height: 160%;
     margin-bottom: .67em
 }
+
+article section p {
+    text-indent: 1.16em;
+    font-size: 110%;
+    line-height: 160%;
+    margin-bottom: .67em
+}
+
 article section ol li p,
 article section ul li p {
     text-indent: 0 !important
 }
 article section ul li {
+    font-size: 110%;
     line-height: 180%
 }
+
 article section ol li {
     line-height: 180%
 }
 #wrap footer p {
     color: #345
 }
+
+article header h2 a {
+    font-size: 110%;
+}
+
 article header group {
     text-transform: capitalize;
     font-size: 90%;
@@ -588,7 +606,6 @@ article header span a:hover {
 article header small {
     font-size: 100%;
     border-top: 2px dotted #214d41;
-    margin-left: 10px;
     padding-top: 10px;
     line-height: 60px
 }
@@ -710,7 +727,7 @@ tbody tr:hover {
 code,
 pre {
     font-family: Courier, monospace;
-    font-size: 90%
+    font-size: 105%
 }
 code {
     padding: 1px 3px;
@@ -722,6 +739,7 @@ code {
     -moz-border-radius: 3px;
     border-radius: 3px
 }
+
 pre {
     display: block;
     padding: 9.5px;
@@ -931,7 +949,7 @@ short_prev_next {
     opacity: .9
 }
 .tag-box a {
-    font-size: 85%;
+    font-size: 100%;
     padding: 4px 6px;
     margin: 2px;
     background: #eee;
@@ -943,7 +961,7 @@ short_prev_next {
 }
 .tag-box a span {
     vertical-align: super;
-    font-size: .8em
+    font-size: 100%
 }
 .tag-box a:hover {
     background-color: #e5e5e5
@@ -1284,16 +1302,16 @@ short_prev_next {
 
 @media (min-width: 1500px) {
     body {
-      -moz-transform: scale(1.35);
-      -moz-transform-origin: center top 0;
-      zoom: 1.35
+        -moz-transform: scale(1.35);
+        -moz-transform-origin: center top 0;
+        zoom: 1.35
     }
 }
 
 @media (min-width: 2500px) {
     body {
-      -moz-transform: scale(2);
-      -moz-transform-origin: center top 0;
-      zoom: 2
+        -moz-transform: scale(2);
+        -moz-transform-origin: center top 0;
+        zoom: 2
     }
 }

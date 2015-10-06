@@ -73,13 +73,26 @@
   {% include widgets/site_info %}
   <div id="top-wrap">
     <section id="top-wrap-inner">
-    <header id="top">
+      <header id="top" style="margin:auto">
       <!-- Home Link -->
       <!--
       <a id="logo" href="{{ HOME_PATH }}" title="回到首页">
         <img src="{{ ASSET_PATH }}/img/logo.png" alt="{{ site.title }}">
       </a>
       -->
+      <a href="/" style="width: 130px">
+          <div style="
+          float: left;
+          margin: 4px 10px 0 10px;
+          height: 30px;
+          width: 30px;
+          background-size: contain;
+          background-image: url('/images/logo/tinylaborg.png');">
+          </div>
+          <div style="margin: 5px">
+            <span style="color: #ffffff; font-size:18px; line-height: 30px">泰晓科技</span>
+          </div>
+        </a>
       <div id="search-box">
         {% include widgets/search_box %}
       </div>

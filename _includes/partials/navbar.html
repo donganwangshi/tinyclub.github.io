@@ -1,0 +1,46 @@
+<div id="navbar">
+    <nav class="navbar navbar-default color-spry-grey-stone-back">
+        <div class="container-fluid container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" style="padding: 10px; width: 150px">
+                    <div style="
+                        float: left;
+                        margin-right: 15px;
+                        height: 30px;
+                        width: 30px;
+                        background-size: contain;
+                        background-image: url('/images/logo/tinylaborg.png');">
+                    </div>
+                    <div style="margin: 5px">
+                        <span class="color-spry-white">泰晓科技</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if page.url == "/index.html" %}
+                    <li class="active">
+                    {% else %}
+                    <li>
+                    {% endif %}
+                        <a rel="bookmark" href="{{ HOME_PATH }}" title="首页">首页</a>
+                    </li>
+                    {% assign pages_list = site.pages | sort: "order" %}
+                    {% assign group = 'navigation' %}
+                    {% include JB/pages_list %}
+                    <li id="rss-link">
+                        <a rel="bookmark" href="{{ site.JB.rss_path }}" title="订阅 RSS">订阅</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
