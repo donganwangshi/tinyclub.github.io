@@ -3,7 +3,7 @@
  * Author: Peng Jingwen
  * Visit 'https://prettyxw.github.io/Spry/' for more information.
  * 
- * Last Modified: Mon, 05 Oct 2015 08:04:16 GMT
+ * Last Modified: Wed, 07 Oct 2015 05:46:44 GMT
  */
 /* helper things */
 /* other helpers for color management */
@@ -4309,7 +4309,7 @@
 
 /* layout controls */
 .container {
-  padding: 0 auto;
+  padding: 0;
   margin: 0 auto;
   max-width: 1280px;
   width: 90%; }
@@ -5062,7 +5062,14 @@ h6 {
   font-size: 1.7rem;
   margin: 1.6rem 0;
   padding: 0;
-  line-height: 1.92rem; }
+  line-height: 1.04rem; }
+
+p {
+  margin: 1.6rem 0;
+  line-height: 2.4rem; }
+
+span {
+  font-size: inherit; }
 
 pre {
   overflow: auto;
@@ -5071,10 +5078,12 @@ pre {
 a {
   word-wrap: break-word;
   color: #4299cb;
-  background-color: transparent; }
+  background-color: transparent;
+  text-decoration: none; }
 
 a:active, a:hover {
-  outline: 0; }
+  outline: 0;
+  text-decoration: none; }
 
 b, strong {
   font-weight: bold; }

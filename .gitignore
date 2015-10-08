@@ -18,3 +18,4 @@ _data/compress.yml
 pdfs/*
 
 .idea
+node_modules
