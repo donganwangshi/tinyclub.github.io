@@ -1,5 +1,29 @@
+<script type="text/javascript">
+    $(function ($) {
+        $('#sidebar .panel-heading span.clickable').on("click", function (e) {
+            if ($(this).hasClass('panel-collapsed')) {
+                // expand the panel
+                $(this).parents('.panel').find('.panel-body').slideDown();
+                $(this).removeClass('panel-collapsed');
+                $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
+            }
+            else {
+                // collapse the panel
+                $(this).parents('.panel').find('.panel-body').slideUp();
+                $(this).addClass('panel-collapsed');
+                $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+            }
+        });
+    });
+</script>
+
 {% include themes/tinylab/partials/sidebar/author.html %}
 
 {% if page.ctg == true %}
     {% include themes/tinylab/partials/sidebar/category.html %}
+{% endif %}
+
+{% if page.group != "home" %}
+{% else %}
+    {% include themes/tinylab/partials/sidebar/sidebar.html %}
 {% endif %}

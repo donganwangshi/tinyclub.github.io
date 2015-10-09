@@ -1,0 +1,107 @@
+<div id="sidebar_widget">
+    {% for sidebar in site.data.sidebars %}
+        {% if sidebar.disable %}
+            {% continue %}
+        {% endif %}
+        {% assign title = sidebar.title %}
+        {% assign icon = sidebar.icon %}
+        {% assign tooltip = sidebar.tooltip %}
+        {% assign prompt = title | prepend: "更多" %}
+        {% assign url = sidebar.url %}
+        {% assign size = 0 %}
+        {% assign condition = nil %}
+        {% assign value = "" %}
+        {% assign item_limits = nil %}
+
+        {% if site.data[sidebar.data] != nil %}
+            {% assign list = site.data[sidebar.data] %}
+            {% assign size = list.size %}
+        {% else %}
+            {% assign list = site[sidebar.src] %}
+            {% assign condition = sidebar.condition %}
+            {% assign value = sidebar.value %}
+
+            {% for item in list %}
+                {% if item.title and page.title and page.title == item.title %}
+                    {% continue %}
+                {% endif %}
+
+                {% if condition %}
+                    {% if item[{{condition}}] == {{value}} %}
+                        {% assign size = 1 %}
+                        {% break %}
+                    {% endif %}
+                    {% if condition == 'path' and item[{{condition}}] contains {{value}} %}
+                        {% assign size = 1 %}
+                        {% break %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if size != 0 %}
+            <div class="panel panel-default">
+                <div class="panel-heading row">
+                    <h3 class="panel-title column">{{ sidebar.title }}</h3>
+                    <span class="pull-right clickable"><i class="fa fa-angle-up"></i></span>
+                    <!--<span class="pull-right clickable panel-collapsed"><i class="fa fa-angle-down"></i></span>-->
+                </div>
+                <div class="panel-body">
+                    <!--<div class="panel-body" style="display: none">-->
+                    <div class="row text-center">
+                        {% assign total_num = 0 %}
+                        {% for item in list %}
+                            {% if condition %}
+                                {% if condition == 'path' %}
+                                    {% unless item[{{condition}}] contains {{value}} %}
+                                        {% continue %}
+                                    {%endunless%}
+                                {% else %}
+                                    {% if item[{{condition}}] != {{value}} %}
+                                        {% continue %}
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                {% if page.album and item.album and page.album == item.album %}
+                                    {% continue %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% if item.title and page.title and page.title == item.title %}
+                                {% continue %}
+                            {% endif %}
+
+                            {% if items_limit %}
+                                {% if total_num >= items_limit %}
+                                    {% break %}
+                                {% endif %}
+                            {% else %}
+                                {% if total_num >= site.JB.sidebar.items_limit %}
+                                    {% break %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% if item.recommend == false %}
+                                {% continue %}
+                            {% endif %}
+                            {% assign total_num =  total_num | plus:1 %}
+                            <a href='{{ item.permalink }}'>
+                                <div class="column xs24">{{ item.title }}</div>
+                            </a>
+                        {% endfor %}
+                        {% assign items_limit = nil %}
+                        {% assign more = "" %}
+                        {% assign prompt = "" %}
+                        {% assign url = nil %}
+                        {% assign truncate = false %}
+                        {% assign size = 0 %}
+                        {% assign condition = nil %}
+                        {% assign items_limit = nil %}
+                        {% assign tooltip = false %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+</div>

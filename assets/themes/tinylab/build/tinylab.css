@@ -17,38 +17,46 @@
   #top_wrap #navbar .navbar-default .navbar-nav > .active > a:hover {
     background-color: transparent; }
 
-.panel {
+#sidebar .panel {
   border-radius: 0;
   box-shadow: none; }
-  .panel .panel-heading {
+  #sidebar .panel .panel-heading {
     background-color: #ffffff;
     border-bottom: 1px solid #eeeeee; }
-    .panel .panel-heading .panel-title {
+    #sidebar .panel .panel-heading .panel-title {
       margin: 0;
       padding: 0; }
 
-#author_widget a {
+#sidebar #author_widget a {
   color: #333333; }
 
-#author_widget a:hover {
+#sidebar #author_widget a:hover {
   color: #aaaaaa; }
 
-#author_widget a i {
+#sidebar #author_widget a i {
   font-size: 130%;
   margin: 5px; }
 
-#author_widget .popover, #author_widget .popover-title {
+#sidebar #author_widget .popover, #sidebar #author_widget .popover-title {
   border-radius: 0; }
 
-#category_widget .panel-body {
+#sidebar #category_widget .panel-body {
   padding: 3px; }
 
-#category_widget a div {
+#sidebar #category_widget a div {
   padding: 10px;
   font-size: 1.5rem;
   color: #333333; }
 
-#category_widget a:hover div {
+#sidebar #category_widget a:hover div {
+  background-color: #dddddd; }
+
+#sidebar #sidebar_widget a div {
+  padding: 10px;
+  font-size: 1.5rem;
+  color: #333333; }
+
+#sidebar #sidebar_widget a:hover div {
   background-color: #dddddd; }
 
 #articles_list .article .article-title a:hover {
