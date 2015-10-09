@@ -12,52 +12,7 @@ description: 泰晓科技--致力于推动业界创造更极致的嵌入式Linux
 ---
 {% include JB/setup %}
 
-
-
 <!-- Recent Posts  -->
 {% assign articles = paginator.posts %}
-{% include themes/tinylab/partials/articles.html %}
-
-<!-- Pagination Links -->
-<section class="pagination pagination-centered">
-  <ul>
-    <!-- First Page -->
-    {% if paginator.previous_page %}
-    <li><a href="/index.html">&laquo;&laquo;</a></li>
-    {% else %}
-    <li class="disabled"><a href="#">&laquo;&laquo;</a></li>
-    {% endif %}
-
-    <!-- Previous Page -->
-    {% if paginator.previous_page %}
-    <li>
-      {% if paginator.previous_page == 1 %}
-      <a href="/index.html">&laquo;</a>
-      {% else %}
-      <a href="/page{{ paginator.previous_page }}">&laquo;</a>
-      {% endif %}
-    </li>
-    {% else %}
-    <li class="disabled"><a href="#">&laquo;</a></li>
-    {% endif %}
-
-    <!-- Current Page -->
-    <li class="active">
-      <span class="page_number ">第 {{ paginator.page }}/{{ paginator.total_pages }} 页</span>
-    </li>
-
-    <!-- Next Page -->
-    {% if paginator.next_page %}
-    <li><a href="/page{{paginator.next_page}}">&raquo;</a></li>
-    {% else %}
-    <li class="disabled"><a href="#">&raquo;</a></li>
-    {% endif %}
-
-    <!-- Last Page -->
-    {% if paginator.next_page %}
-    <li><a href="/page{{ paginator.total_pages }}">&raquo;&raquo;</a></li>
-    {% else %}
-    <li class="disabled"><a href="#">&raquo;&raquo;</a></li>
-    {% endif %}
-  </ul>
-</section>
+{% include themes/tinylab/partials/content/articles.html %}
+{% include themes/tinylab/partials/content/articles_pagination.html %}

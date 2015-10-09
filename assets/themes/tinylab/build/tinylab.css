@@ -1,5 +1,5 @@
 #top_wrap #navbar {
-  box-shadow: 1px 1px 3px #aaaaaa; }
+  box-shadow: 1px 1px 1px #aaaaaa; }
   #top_wrap #navbar .navbar {
     border: none;
     border-radius: 0; }
@@ -21,16 +21,32 @@
   color: #aaaaaa; }
 
 #articles_list .article .article-information .article-time {
-  padding-left: 0; }
+  margin: 5px 0;
+  padding: 0; }
 
-#articles_list .article .article-information .article-group a, #articles_list .article .article-information .article-category a, #articles_list .article .article-information .article-album a {
-  font-size: 1.3rem;
-  color: #363d48;
-  background-color: #e4e4e4;
-  padding: 2px 10px; }
+#articles_list .article .article-information .article-group, #articles_list .article .article-information .article-category, #articles_list .article .article-information .article-album {
+  margin: 5px 0;
+  padding-right: 0; }
+  #articles_list .article .article-information .article-group a, #articles_list .article .article-information .article-category a, #articles_list .article .article-information .article-album a {
+    font-size: 1.3rem;
+    color: #363d48;
+    background-color: #e4e4e4;
+    padding: 2px 10px; }
+  #articles_list .article .article-information .article-group a:hover, #articles_list .article .article-information .article-category a:hover, #articles_list .article .article-information .article-album a:hover {
+    color: #aaaaaa; }
+  #articles_list .article .article-information .article-group i, #articles_list .article .article-information .article-category i, #articles_list .article .article-information .article-album i {
+    font-size: 100%; }
 
-#articles_list .article .article-information .article-group a:hover, #articles_list .article .article-information .article-category a:hover, #articles_list .article .article-information .article-album a:hover {
-  color: #aaaaaa; }
-
-#articles_list .article .article-information .article-group i, #articles_list .article .article-information .article-category i, #articles_list .article .article-information .article-album i {
-  font-size: 100%; }
+#articles_pagination ul {
+  margin: 0;
+  padding: 0; }
+  #articles_pagination ul li {
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px; }
+    #articles_pagination ul li i {
+      margin-bottom: 5px; }
+    #articles_pagination ul li a {
+      color: #333333; }
+    #articles_pagination ul li.disabled a {
+      color: #e4e4e4; }
