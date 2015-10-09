@@ -15,8 +15,6 @@
                     $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
                 }
             });
-
-//            $('#category_widget .panel-body a').popover();
         });
     </script>
 
@@ -34,6 +32,9 @@
                         <div class="column xs12">{{ category.name }}</div>
                     </a>
                 {% endfor %}
+                <a href='{{ site.JB.categories_path }}#未经分类-ref'>
+                    <div class="column xs12">未经分类</div>
+                </a>
             </div>
         </div>
     </div>

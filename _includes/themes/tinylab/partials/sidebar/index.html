@@ -1,3 +1,5 @@
 {% include themes/tinylab/partials/sidebar/author.html %}
 
-{% include themes/tinylab/partials/sidebar/category.html %}
+{% if page.ctg == true %}
+    {% include themes/tinylab/partials/sidebar/category.html %}
+{% endif %}
