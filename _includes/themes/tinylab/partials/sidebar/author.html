@@ -29,11 +29,11 @@
     <div class="panel panel-default">
         <div class="panel-heading row">
             <h3 class="panel-title column">联系{{ who }}</h3>
-            <span class="pull-right clickable"><i class="fa fa-angle-up"></i></span>
-            <!--<span class="pull-right clickable panel-collapsed"><i class="fa fa-angle-down"></i></span>-->
+            <!--<span class="pull-right clickable"><i class="fa fa-angle-up"></i></span>-->
+            <span class="pull-right clickable panel-collapsed"><i class="fa fa-angle-down"></i></span>
         </div>
-        <div class="panel-body">
-        <!--<div class="panel-body" style="display: none">-->
+        <!--<div class="panel-body">-->
+        <div class="panel-body" style="display: none">
             {% assign author = site.data.people[author_name] %}
             {% if author == null %} {% assign author = site.data.people["admin"] %} {% endif %}
 
