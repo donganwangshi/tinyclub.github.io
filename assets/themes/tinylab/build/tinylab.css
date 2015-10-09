@@ -20,7 +20,8 @@
 .panel {
   border-radius: 0; }
   .panel .panel-heading {
-    border-bottom: 0; }
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee; }
     .panel .panel-heading .panel-title {
       margin: 0;
       padding: 0; }
