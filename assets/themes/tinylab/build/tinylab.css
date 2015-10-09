@@ -1,2 +1,18 @@
-body {
-  background-color: transparent; }
+#top-wrap #navbar {
+  box-shadow: 1px 1px 3px #aaaaaa; }
+  #top-wrap #navbar .navbar {
+    border: none;
+    border-radius: 0; }
+    #top-wrap #navbar .navbar .navbar-nav a {
+      font-size: 1.5rem;
+      margin: 0 -3px; }
+    #top-wrap #navbar .navbar .navbar-nav a:hover {
+      color: #eeeeee; }
+    #top-wrap #navbar .navbar .navbar-nav .active {
+      background-color: #171717; }
+      #top-wrap #navbar .navbar .navbar-nav .active a {
+        color: #ffffff; }
+  #top-wrap #navbar .navbar-default .navbar-nav > .active > a,
+  #top-wrap #navbar .navbar-default .navbar-nav > .active > a:focus,
+  #top-wrap #navbar .navbar-default .navbar-nav > .active > a:hover {
+    background-color: transparent; }

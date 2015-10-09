@@ -18,7 +18,7 @@ var buildStyleSheets = function() {
 
 gulp.task('watch', function() {
     buildStyleSheets();
-    gulp.watch(['stylesheets/*.scss', 'stylesheets/components/*.scss'], function(event) {
+    gulp.watch('stylesheets/*.scss', function(event) {
         console.log(`File ${event.path} was ${event.type} running tasks...`);
         buildStyleSheets();
     });
