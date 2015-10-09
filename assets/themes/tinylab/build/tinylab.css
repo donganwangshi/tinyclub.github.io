@@ -18,7 +18,8 @@
     background-color: transparent; }
 
 .panel {
-  border-radius: 0; }
+  border-radius: 0;
+  box-shadow: none; }
   .panel .panel-heading {
     background-color: #ffffff;
     border-bottom: 1px solid #eeeeee; }
@@ -38,6 +39,17 @@
 
 #author_widget .popover, #author_widget .popover-title {
   border-radius: 0; }
+
+#category_widget .panel-body {
+  padding: 3px; }
+
+#category_widget a div {
+  padding: 10px;
+  font-size: 1.5rem;
+  color: #333333; }
+
+#category_widget a:hover div {
+  background-color: #dddddd; }
 
 #articles_list .article .article-title a:hover {
   color: #aaaaaa; }

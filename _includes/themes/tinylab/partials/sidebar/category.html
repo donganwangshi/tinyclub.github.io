@@ -1,0 +1,40 @@
+<div id="category_widget">
+    <script type="text/javascript">
+        $(function ($) {
+            $('#category_widget .panel-heading span.clickable').on("click", function (e) {
+                if ($(this).hasClass('panel-collapsed')) {
+                    // expand the panel
+                    $(this).parents('.panel').find('.panel-body').slideDown();
+                    $(this).removeClass('panel-collapsed');
+                    $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
+                }
+                else {
+                    // collapse the panel
+                    $(this).parents('.panel').find('.panel-body').slideUp();
+                    $(this).addClass('panel-collapsed');
+                    $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+                }
+            });
+
+//            $('#category_widget .panel-body a').popover();
+        });
+    </script>
+
+    <div class="panel panel-default">
+        <div class="panel-heading row">
+            <h3 class="panel-title column">文章分类</h3>
+            <span class="pull-right clickable"><i class="fa fa-angle-up"></i></span>
+            <!--<span class="pull-right clickable panel-collapsed"><i class="fa fa-angle-down"></i></span>-->
+        </div>
+        <div class="panel-body">
+        <!--<div class="panel-body" style="display: none">-->
+            <div class="row text-center">
+                {% for category in site.data.categories %}
+                    <a href='{{ site.JB.categories_path }}#{{ category.name | downcase | replace:" ","-" | replace:"/","-" }}-ref'>
+                        <div class="column xs12">{{ category.name }}</div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

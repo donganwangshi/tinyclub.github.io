@@ -1,5 +1,6 @@
 .panel {
     border-radius: 0;
+    box-shadow: none;
 
     .panel-heading {
         background-color: #ffffff;
@@ -28,5 +29,26 @@
 
     .popover, .popover-title {
         border-radius: 0;
+    }
+}
+
+#category_widget {
+
+    .panel-body {
+        padding: 3px;
+    }
+
+    a {
+        div {
+            padding: 10px;
+            font-size: 1.5rem;
+            color: #333333;
+        }
+    }
+
+    a:hover {
+        div {
+            background-color: #dddddd;
+        }
     }
 }
