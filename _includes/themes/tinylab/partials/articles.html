@@ -1,0 +1,79 @@
+<div id="articles_list">
+    {% for article in articles %}
+        {% if condition %}
+            {% if condition != 'path' %}
+                {% if article[{{condition}}] != {{value}} %}
+                    {% continue %}
+                {% endif %}
+            {% else %}
+                {% unless article[{{condition}}] contains {{value}} %}
+                    {% continue %}
+                {%endunless%}
+            {% endif %}
+        {% endif %}
+
+        <div class="article">
+            <div class="space size-1"></div>
+
+            <div class="article-title">
+                <h4>
+                    <a class="font-weight-thin color-spry-grey-mine" href="{{ article.url }}">
+                        {% if article.desc %}<span>{{ article.desc }}</span>{% endif %}{{ article.title }}
+                    </a>
+                </h4>
+            </div>
+            <div class="article-information row">
+                <!-- time -->
+                <div class="article-time column">
+                    {% assign article_date = nil %}
+                    {% if article.date %}
+                        {% assign article_date = article.date %}
+                    {% else %}
+                        {% if article.update %}
+                            {% assign article_date = article.update %}
+                        {% endif %}
+                    {% endif %}
+                    {% if article_date %}
+                        <span class="font-weight-thin color-spry-shady">{{ article_date | date: "%Y-%m-%d" }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="article-group column">
+                    {% if article.group %}{% assign group = article.group %}{% else %}{% assign group = "original" %}{% endif %}
+                    {% assign group_name = site.data.groups[group] %}
+                    <i class="fa fa-folder"></i>
+                    <a href="{{ BASE_PATH }}{{ site.JB.groups_path }}#{{ group_name | downcase | replace: ' ','-' }}-ref" title="查看所有 {{group_name}} 文章">{{ group_name }}</a>
+                </div>
+
+                <div class="article-category column">
+                    {% assign categories_limit = site.JB.article.categories_limit %}
+                        {% if article.album %}
+                        {% assign categories_limit = site.JB.article.categories_limit | minus: 1 %}
+                        {% endif %}
+                    {% assign cnt = 0 %}
+                    {% for category in article.categories %}
+                        {% assign cnt = cnt | plus:1 %}
+                        {% if cnt == 1 %}
+                            <i class="fa fa-tag"></i>
+                        {% endif %}
+                        {% if cnt > categories_limit %}
+                            {% break %}
+                        {% endif %}
+                        {% assign downcase_name = category | downcase %}
+                        <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category | downcase | replace: ' ','-' | replace:'/','-' }}-ref" title="查看所有 {{category}} 文章">{{ category | capitalize }} <sup>{{ site.categories[downcase_name].size}}</sup></a>
+                    {% endfor %}
+                </div>
+
+                <div class="article-album column">
+                    {% if article.album %}
+                        <i class="fa fa-book"></i>
+                        <a href="{{ BASE_PATH }}{{ site.JB.albums_path }}#{{ article.album | downcase | replace: ' ','-' | replace:'/','-' }}-ref" title="查看该专辑所有文章">{{ article.album }}</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="space size-1"></div>
+            <div class="separator size-0" style="background-color: #cacaca"></div>
+        </div>
+    {% endfor %}
+</div>

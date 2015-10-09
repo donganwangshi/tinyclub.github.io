@@ -1,0 +1,32 @@
+#articles_list {
+    .article {
+        .article-title {
+            a:hover {
+                color:#aaaaaa;
+            }
+        }
+
+        .article-information {
+            .article-time {
+                padding-left: 0;
+            }
+
+            .article-group, .article-category, .article-album {
+                a {
+                    font-size: 1.3rem;
+                    color: #363d48;
+                    background-color: #e4e4e4;
+                    padding: 2px 10px;
+                }
+
+                a:hover {
+                    color:#aaaaaa;
+                }
+
+                i {
+                    font-size: 100%;
+                }
+            }
+        }
+    }
+}
