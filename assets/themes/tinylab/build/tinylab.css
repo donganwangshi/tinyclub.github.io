@@ -1,0 +1,74 @@
+#top_wrap #navbar {
+  box-shadow: 1px 1px 1px #aaaaaa; }
+  #top_wrap #navbar .navbar {
+    border: none;
+    border-radius: 0; }
+    #top_wrap #navbar .navbar .navbar-nav a {
+      font-size: 1.5rem;
+      margin: 0 -3px; }
+    #top_wrap #navbar .navbar .navbar-nav a:hover {
+      color: #eeeeee; }
+    #top_wrap #navbar .navbar .navbar-nav .active {
+      background-color: #171717; }
+      #top_wrap #navbar .navbar .navbar-nav .active a {
+        color: #ffffff; }
+  #top_wrap #navbar .navbar-default .navbar-nav > .active > a,
+  #top_wrap #navbar .navbar-default .navbar-nav > .active > a:focus,
+  #top_wrap #navbar .navbar-default .navbar-nav > .active > a:hover {
+    background-color: transparent; }
+
+.panel {
+  border-radius: 0; }
+  .panel .panel-heading {
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee; }
+    .panel .panel-heading .panel-title {
+      margin: 0;
+      padding: 0; }
+
+#author_widget a {
+  color: #333333; }
+
+#author_widget a:hover {
+  color: #aaaaaa; }
+
+#author_widget a i {
+  font-size: 130%;
+  margin: 5px; }
+
+#author_widget .popover, #author_widget .popover-title {
+  border-radius: 0; }
+
+#articles_list .article .article-title a:hover {
+  color: #aaaaaa; }
+
+#articles_list .article .article-information .article-time {
+  margin: 5px 0;
+  padding: 0; }
+
+#articles_list .article .article-information .article-group, #articles_list .article .article-information .article-category, #articles_list .article .article-information .article-album {
+  margin: 5px 0;
+  padding-right: 0; }
+  #articles_list .article .article-information .article-group a, #articles_list .article .article-information .article-category a, #articles_list .article .article-information .article-album a {
+    font-size: 1.3rem;
+    color: #363d48;
+    background-color: #e4e4e4;
+    padding: 2px 10px; }
+  #articles_list .article .article-information .article-group a:hover, #articles_list .article .article-information .article-category a:hover, #articles_list .article .article-information .article-album a:hover {
+    color: #aaaaaa; }
+  #articles_list .article .article-information .article-group i, #articles_list .article .article-information .article-category i, #articles_list .article .article-information .article-album i {
+    font-size: 100%; }
+
+#articles_pagination ul {
+  margin: 0;
+  padding: 0; }
+  #articles_pagination ul li {
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px; }
+    #articles_pagination ul li i {
+      margin-bottom: 5px; }
+    #articles_pagination ul li a {
+      color: #333333; }
+    #articles_pagination ul li.disabled a {
+      color: #e4e4e4; }

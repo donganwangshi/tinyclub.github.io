@@ -29,81 +29,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="{{ BASE_PATH }}/favicon.ico">
+        <link rel="shortcut icon" href="{{ ASSET_PATH }}/images/favicon.ico">
 
         <!-- Feed -->
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{ site.JB.rss_path }}">
         <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="{{ site.JB.atom_path }}">
 
         <!-- Styles -->
-        {% if site.data.compress.css_js %}
-        {{ assign css_js_compress_tag = site.data.compress.css_js_tag }}
-        {% else %}
-        {{ assign css_js_compress_tag = "" }}
-        {% endif %}
-
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/stylesheets/bootstrap-3.3.5.min.css">
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/stylesheets/spry-0.7.0.min.css">
-
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/css/style{{ css_js_compress_tag }}.css">
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/css/fontello{{ css_js_compress_tag }}.css">
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/css/tooltip{{ css_js_compress_tag }}.css" media="screen">
-
-        {% if page.toc != false or page.ctg == true %}
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/css/toc{{ css_js_compress_tag }}.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/tocmd/css/toc{{ css_js_compress_tag }}.css" type="text/css" media="all">
-        {% endif %}
-        {% if page.group != "home" %}
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/code-prettify/{{ site.JB.code_prettify.theme }}{{ css_js_compress_tag }}.css" type="text/css" media="all">
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/css/svg{{ css_js_compress_tag }}.css">
-        {% endif %}
-
-        {% if page.plugin %}
-        <link rel="stylesheet" href="{{ ASSET_PATH }}/css/{{ page.plugin }}{{ css_js_compress_tag }}.css" type="text/css" media="all">
-        {% endif %}
+        <link rel="stylesheet" href="{{ ASSET_PATH }}/build/bootstrap-3.3.5.min.css">
+        <link rel="stylesheet" href="{{ ASSET_PATH }}/build/spry-0.7.0.min.css">
+        <link rel="stylesheet" href="{{ ASSET_PATH }}/build/tinylab.min.css">
 
         <!-- Scripts -->
-        <script type="text/javascript" src="{{ ASSET_PATH }}/javascripts/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="{{ ASSET_PATH }}/javascripts/bootstrap-3.3.5.min.js"></script>
-        <script type="text/javascript" src="{{ ASSET_PATH }}/qrcode/jquery.qrcode{{ css_js_compress_tag }}.js"></script>
-        <script type="text/javascript" src="{{ ASSET_PATH }}/js/core{{ css_js_compress_tag }}.js"></script>
-
+        <script type="text/javascript" src="{{ ASSET_PATH }}/build/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="{{ ASSET_PATH }}/build/bootstrap-3.3.5.min.js"></script>
+        <script type="text/javascript" src="{{ ASSET_PATH }}/build/tinylab.js"></script>
     </head>
 
     <body>
-        <div id="top-wrap">
-            {% include partials/navbar.html %}
+        <div id="top_wrap">
+            {% include themes/tinylab/partials/navbar.html %}
         </div>
 
-        <div class="space size-1"></div>
-
-        <div id="main-wrap" class="container row">
+        <div id="main_wrap" class="container row">
             <div id="content" class="column s24 m16 l18 xl18">
                 {{ content }}
             </div>
-            <div id="sidebar" class="column s24 m8  l6  xl6">
-                <div class="space size-1"></div>
-                {% include widgets/fixed_container %}
+            <div id="sidebar" class="column s24 m18 l6  xl6">
+                <div class="space size-3"></div>
+                {% include themes/tinylab/partials/sidebar/index.html %}
             </div>
         </div>
 
-        {% include partials/footer.html %}
-
-        {% if page.toc != false %}
-        <script src="{{ ASSET_PATH }}/js/toc{{ css_js_compress_tag }}.js"></script>
-        <script src="{{ ASSET_PATH }}/tocmd/js/jquery.toc{{ css_js_compress_tag }}.js"></script>
-        {% endif %}
-
-        {% if page.group != "home" %}
-        <script type="text/javascript" src="{{ ASSET_PATH }}/js/scrollspy{{ css_js_compress_tag }}.js"></script>
-
-        <script src="{{ ASSET_PATH }}/code-prettify/prettify{{ css_js_compress_tag }}.js"></script>
-        {% include widgets/code-prettify %}
-        {% endif %}
-
-        {% if page.plugin %}
-        <script src="{{ ASSET_PATH }}/js/{{ page.plugin }}{{ css_js_compress_tag }}.js"></script>
-        {% endif %}
+        <div id="bottom_wrap">
+            {% include themes/tinylab/partials/footer.html %}
+        </div>
 
         {% include JB/analytics %}
     </body>

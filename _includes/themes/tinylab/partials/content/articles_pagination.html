@@ -1,0 +1,40 @@
+<div id="articles_pagination" class="section text-center">
+    <!-- First Page -->
+    <ul>
+        {% if paginator.previous_page %}
+            <li><a href="/index.html"><i class="fa fa-angle-double-left"></i></a></li>
+        {% else %}
+            <li class="disabled"><a><i class="fa fa-angle-double-left"></i></a></li>
+        {% endif %}
+
+        <!-- Previous Page -->
+        {% if paginator.previous_page %}
+            {% if paginator.previous_page == 1 %}
+                <li><a href="/index.html"><i class="fa fa-angle-left"></i></a></li>
+            {% else %}
+                <li><a href="/page{{ paginator.previous_page }}"><i class="fa fa-angle-left"></i></a></li>
+            {% endif %}
+        {% else %}
+            <li class="disabled"><a><i class="fa fa-angle-left"></i></a></li>
+        {% endif %}
+
+        <!-- Current Page -->
+        <li class="active">
+            <span class="page_number ">第 {{ paginator.page }}/{{ paginator.total_pages }} 页</span>
+        </li>
+
+        <!-- Next Page -->
+        {% if paginator.next_page %}
+            <li><a href="/page{{paginator.next_page}}"><i class="fa fa-angle-right"></i></a></li>
+        {% else %}
+            <li class="disabled"><a><i class="fa fa-angle-right"></i></a></li>
+        {% endif %}
+
+        <!-- Last Page -->
+        {% if paginator.next_page %}
+            <li><a href="/page{{ paginator.total_pages }}"><i class="fa fa-angle-double-right"></i></a></li>
+        {% else %}
+            <li class="disabled"><a><i class="fa fa-angle-double-right"></i></a></li>
+        {% endif %}
+    </ul>
+</div>

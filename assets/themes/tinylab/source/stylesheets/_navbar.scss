@@ -1,0 +1,36 @@
+#top_wrap {
+    #navbar {
+        box-shadow: 1px 1px 1px #aaaaaa;
+
+        .navbar {
+            border: none;
+            border-radius: 0;
+
+            .navbar-nav {
+
+                a {
+                    font-size: 1.5rem;
+                    margin: 0 -3px;
+                }
+
+                a:hover {
+                    color: #eeeeee;
+                }
+
+                .active{
+                    background-color: #171717;
+
+                    a {
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+
+        .navbar-default .navbar-nav>.active>a,
+        .navbar-default .navbar-nav>.active>a:focus,
+        .navbar-default .navbar-nav>.active>a:hover {
+            background-color: transparent;
+        }
+    }
+}
