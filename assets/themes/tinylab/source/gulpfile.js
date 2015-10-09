@@ -1,7 +1,10 @@
+'use strict';
+
 var gulp      = require('gulp'),
     sass      = require('gulp-sass'),
     minifyCSS = require('gulp-minify-css'),
-    rename    = require("gulp-rename");
+    rename    = require("gulp-rename"),
+    concat    = require('gulp-concat');
 
 gulp.task('default', ['watch']);
 
@@ -16,10 +19,18 @@ var buildStyleSheets = function() {
         .pipe(gulp.dest('../build/'));
 };
 
+var buildJavaScripts = function() {
+    gulp.src('./javascripts/*.js')
+        .pipe(concat('tinylab.js'))
+        .pipe(gulp.dest('../build/'));
+};
+
 gulp.task('watch', function() {
     buildStyleSheets();
+    buildJavaScripts();
     gulp.watch('stylesheets/*.scss', function(event) {
         console.log(`File ${event.path} was ${event.type} running tasks...`);
         buildStyleSheets();
+        buildJavaScripts();
     });
 });

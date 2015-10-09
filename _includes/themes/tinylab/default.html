@@ -43,6 +43,7 @@
         <!-- Scripts -->
         <script type="text/javascript" src="{{ ASSET_PATH }}/build/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="{{ ASSET_PATH }}/build/bootstrap-3.3.5.min.js"></script>
+        <script type="text/javascript" src="{{ ASSET_PATH }}/build/tinylab.js"></script>
     </head>
 
     <body>
@@ -51,12 +52,12 @@
         </div>
 
         <div id="main_wrap" class="container row">
-            <div id="content" class="column s24 m16 l16 xl18">
+            <div id="content" class="column s24 m16 l18 xl18">
                 {{ content }}
             </div>
-            <div id="sidebar" class="column s24 m18  l8  xl6">
-                <div class="space size-1"></div>
-                {% include widgets/fixed_container %}
+            <div id="sidebar" class="column s24 m18 l6  xl6">
+                <div class="space size-3"></div>
+                {% include themes/tinylab/partials/sidebar/index.html %}
             </div>
         </div>
 

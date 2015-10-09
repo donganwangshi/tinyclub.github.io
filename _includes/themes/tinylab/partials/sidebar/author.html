@@ -1,0 +1,145 @@
+<div id="author_widget">
+
+    <script type="text/javascript">
+        $(function ($) {
+            $('#author_widget .panel-heading span.clickable').on("click", function (e) {
+                if ($(this).hasClass('panel-collapsed')) {
+                    // expand the panel
+                    $(this).parents('.panel').find('.panel-body').slideDown();
+                    $(this).removeClass('panel-collapsed');
+                    $(this).find('i').removeClass('fa-angle-down').addClass('fa-angle-up');
+                }
+                else {
+                    // collapse the panel
+                    $(this).parents('.panel').find('.panel-body').slideUp();
+                    $(this).addClass('panel-collapsed');
+                    $(this).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+                }
+            });
+
+            $('#author_widget .panel-body a').popover();
+        });
+    </script>
+
+    {% if author_name == null or author_name == empty %}
+        {% capture author_name %}{% if page.author %}{{ page.author }}{% else %}admin{% endif %}{% endcapture %}
+    {% endif %}
+    {% capture who %}{% if author_name == "admin" %}我们{% else %}作者{% endif %}{% endcapture %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading row">
+            <h3 class="panel-title column">联系{{ who }}</h3>
+            <span class="pull-right clickable"><i class="fa fa-angle-up"></i></span>
+            <!--<span class="pull-right clickable panel-collapsed"><i class="fa fa-angle-down"></i></span>-->
+        </div>
+        <div class="panel-body">
+        <!--<div class="panel-body" style="display: none">-->
+            {% assign author = site.data.people[author_name] %}
+            {% if author == null %} {% assign author = site.data.people["admin"] %} {% endif %}
+
+            {% for contact in site.data.contacts %}
+                {% if page.url == "/authors.html" and (contact.name == "archive" or contact.name == "article") %}
+                    {% continue %}
+                {% endif %}
+
+                {% assign icon = '' %}
+                {% assign url = '' %}
+                {% assign title = '' %}
+                {% assign content = '' %}
+
+                {% if contact.name == "article" %}
+                    {% assign icon = '<i class="fa fa-link"></i>' %}
+                    {% assign url = site.production_url | append: page.url %}
+                    {% assign title = "手机扫码阅读" %}
+                {% endif %}
+
+                {% if contact.name == "archive" and author['archive'] %}
+                    {% assign icon = '<i class="fa fa-archive"></i>' %}
+                    {% if author_name == "admin" %}
+                        {% assign url = site.production_url | append: site.JB.archive_path %}
+                        {% assign title = "查看本站 " | append: site.posts.size | append: " 篇文章" %}
+                    {% else %}
+                        {% assign post_num = 0 %}
+                        {% assign posts_by_author = site.posts | group_by:"author" | sort:"author" %}
+                        {% for author in posts_by_author %}
+                            {% if author.name == author_name %}
+                                {% capture post_num %}{{ author.items.size }}{% endcapture %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+                        {% assign url = site.production_url | append: site.JB.authors_path | append:"#" | append: (author_name | replace:' ','-') %}
+                        {% assign title = "查看作者 " | append: post_num | append: " 篇文章" %}
+                    {% endif %}
+                {% endif %}
+
+                {% if contact.name == "site" and author['site'] %}
+                    {% assign icon = '<i class="fa fa-external-link-square"></i>' %}
+                    {% assign url = author.site %}
+                    {% assign title = "扫码访问 " | append: author.site  %}
+                {% endif %}
+
+                {% if contact.name == "email" and author['email'] %}
+                    {% assign icon = '<i class="fa fa-envelope"></i>' %}
+                    {% assign url = "mailto:" | author.email %}
+                    {% assign title = "邮件 " | append: author.email %}
+                {% endif %}
+
+                {% if contact.name == "github" and author['github'] %}
+                    {% assign icon = '<i class="fa fa-github"></i>' %}
+                    {% assign url = "http://github.com/" | append: author.github %}
+                    {% assign title = "Github: " | append: author.github %}
+                {% endif %}
+
+                {% if contact.name == "weibo" and author['weibo'] %}
+                    {% assign icon = '<i class="fa fa-weibo"></i>' %}
+                    {% assign url = "http://weibo.com/" | append: author.weibo %}
+                    {% assign title = "新浪微博 " | append: author.weibo %}
+                {% endif %}
+
+                {% if contact.name == "wechat" and author['wechat'] %}
+                    {% assign icon = '<i class="fa fa-wechat"></i>' %}
+                    {% assign title = "扫码关注微信 " | append: author.wechat %}
+                {% endif %}
+
+                {% if contact.name == "sponsor" and author['sponsor'] %}
+                    {% assign icon = '<i class="fa fa-rmb"></i>' %}
+                    {% assign author_paytool = author['sponsor'] | split: "-" | first %}
+                    {% assign author_payammount = author['sponsor'] | split: "-" | last %}
+                    {% assign title = "用" | append: site.data.paytools[author_paytool] | append: "扫码赞助 ￥" | append: author_payammount %}
+                {% endif %}
+
+                {% if contact.name == "info" and author['info'] %}
+                    {% assign icon = '<i class="fa fa-info-circle"></i>' %}
+                    {% assign title = author.name | append: " (" | append: author.nickname | append: ")" %}
+                    {% assign content = author.info | replace:"；","<br/>" | replace:";", "<br/>" %}
+                {% endif %}
+
+            <a id="{{ contact.name }}" href="{{ url }}" type="button"
+                        data-placement="bottom"
+                        data-trigger="hover"
+                        data-html="true"
+                        data-title="{{ title }}"
+                        data-content='
+                            {{ content }}
+                            {% capture qrcode %}{{ contact.name }}-qrcode{% endcapture %}
+                            {% assign has_qrcode = author[qrcode] %}
+                            {% if has_qrcode %}
+                                <div id="qrcode">
+                                    <img style="height: 200px; width:200px" src="/images/{{ contact.name }}/{{ author[contact.name] }}.jpg">
+                                </div>
+                            {% else %}
+                                {% if url != "" %}
+                                    <div id="qrcode_generate"></div>
+                                    <script type="text/javascript"> $(function ($) { $("#qrcode_generate").qrcode({ text: "{{ url }}", width: 200, height: 200 }) });</script>
+                                {% endif %}
+                            {% endif %}
+                        '>
+                    {{ icon }}
+                </a>
+
+            {% endfor %}
+            {% assign author = null %}
+            {% assign author_name = null %}
+        </div>
+    </div>
+</div>
