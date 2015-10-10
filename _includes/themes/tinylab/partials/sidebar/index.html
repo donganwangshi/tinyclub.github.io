@@ -24,6 +24,8 @@
 {% endif %}
 
 {% if page.group != "home" %}
+    {% include themes/tinylab/partials/sidebar/albums.html %}
+    {% include themes/tinylab/partials/sidebar/recent_posts.html %}
 {% else %}
     {% include themes/tinylab/partials/sidebar/sidebar.html %}
 {% endif %}

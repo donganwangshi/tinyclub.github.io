@@ -1,45 +1,28 @@
-<div id="sidebar_widget">
-    {% for sidebar in site.data.sidebars %}
-        {% if sidebar.disable %}
+{% if page.album %}
+    {% assign url = page.album | downcase | replace:' ','-' | replace:'/','-' | prepend: "/albums.html#" | append: "-ref" %}
+    {% assign prompt = "查看该专辑" %}
+    {% assign truncate = true %}
+    {% assign tooltip = false %}
+    {% assign title = "专辑文章" %}
+    {% assign icon = "coffee" %}
+    {% assign list = site.posts %}
+    {% assign condition = "album" %}
+    {% assign value = page.album %}
+    {% assign items_limit = 15 %}
+    {% assign size = 0 %}
+
+    {% for item in list %}
+        {% if item.title and page.title and page.title == item.title %}
             {% continue %}
         {% endif %}
-        {% assign title = sidebar.title %}
-        {% assign icon = sidebar.icon %}
-        {% assign tooltip = sidebar.tooltip %}
-        {% assign prompt = title | prepend: "更多" %}
-        {% assign url = sidebar.url %}
-        {% assign size = 0 %}
-        {% assign condition = nil %}
-        {% assign value = "" %}
-        {% assign item_limits = nil %}
-
-        {% if site.data[sidebar.data] != nil %}
-            {% assign list = site.data[sidebar.data] %}
-            {% assign size = list.size %}
-        {% else %}
-            {% assign list = site[sidebar.src] %}
-            {% assign condition = sidebar.condition %}
-            {% assign value = sidebar.value %}
-
-            {% for item in list %}
-                {% if item.title and page.title and page.title == item.title %}
-                    {% continue %}
-                {% endif %}
-
-                {% if condition %}
-                    {% if item[{{condition}}] == {{value}} %}
-                        {% assign size = 1 %}
-                        {% break %}
-                    {% endif %}
-                    {% if condition == 'path' and item[{{condition}}] contains {{value}} %}
-                        {% assign size = 1 %}
-                        {% break %}
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
+        {% if item[{{condition}}] == {{value}} %}
+            {% assign size = 1 %}
+            {% break %}
         {% endif %}
+    {% endfor %}
 
-        {% if size != 0 %}
+    {% if size != 0 %}
+        <div id="albums_widget">
             <div class="panel panel-default">
                 <div class="panel-heading row">
                     <h3 class="panel-title column">{{ title }}</h3>
@@ -101,7 +84,6 @@
                     </div>
                 </div>
             </div>
-        {% endif %}
-    {% endfor %}
-
-</div>
+        </div>
+    {% endif %}
+{% endif %}
