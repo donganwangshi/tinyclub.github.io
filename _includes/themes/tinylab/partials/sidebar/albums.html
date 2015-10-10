@@ -1,0 +1,89 @@
+{% if page.album %}
+    {% assign url = page.album | downcase | replace:' ','-' | replace:'/','-' | prepend: "/albums.html#" | append: "-ref" %}
+    {% assign prompt = "查看该专辑" %}
+    {% assign truncate = true %}
+    {% assign tooltip = false %}
+    {% assign title = "专辑文章" %}
+    {% assign icon = "coffee" %}
+    {% assign list = site.posts %}
+    {% assign condition = "album" %}
+    {% assign value = page.album %}
+    {% assign items_limit = 15 %}
+    {% assign size = 0 %}
+
+    {% for item in list %}
+        {% if item.title and page.title and page.title == item.title %}
+            {% continue %}
+        {% endif %}
+        {% if item[{{condition}}] == {{value}} %}
+            {% assign size = 1 %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+
+    {% if size != 0 %}
+        <div id="albums_widget">
+            <div class="panel panel-default">
+                <div class="panel-heading row">
+                    <h3 class="panel-title column">{{ title }}</h3>
+                    <span class="pull-right clickable"><i class="fa fa-angle-up"></i></span>
+                    <!--<span class="pull-right clickable panel-collapsed"><i class="fa fa-angle-down"></i></span>-->
+                </div>
+                <div class="panel-body">
+                    <!--<div class="panel-body" style="display: none">-->
+                    <div class="row text-center">
+                        {% assign total_num = 0 %}
+                        {% for item in list %}
+                            {% if condition %}
+                                {% if condition == 'path' %}
+                                    {% unless item[{{condition}}] contains {{value}} %}
+                                        {% continue %}
+                                    {%endunless%}
+                                {% else %}
+                                    {% if item[{{condition}}] != {{value}} %}
+                                        {% continue %}
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                {% if page.album and item.album and page.album == item.album %}
+                                    {% continue %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% if item.title and page.title and page.title == item.title %}
+                                {% continue %}
+                            {% endif %}
+
+                            {% if items_limit %}
+                                {% if total_num >= items_limit %}
+                                    {% break %}
+                                {% endif %}
+                            {% else %}
+                                {% if total_num >= site.JB.sidebar.items_limit %}
+                                    {% break %}
+                                {% endif %}
+                            {% endif %}
+
+                            {% if item.recommend == false %}
+                                {% continue %}
+                            {% endif %}
+                            {% assign total_num =  total_num | plus:1 %}
+                            <a href='{{ item.permalink }}'>
+                                <div class="column xs24">{{ item.title }}</div>
+                            </a>
+                        {% endfor %}
+                        {% assign items_limit = nil %}
+                        {% assign more = "" %}
+                        {% assign prompt = "" %}
+                        {% assign url = nil %}
+                        {% assign truncate = false %}
+                        {% assign size = 0 %}
+                        {% assign condition = nil %}
+                        {% assign items_limit = nil %}
+                        {% assign tooltip = false %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

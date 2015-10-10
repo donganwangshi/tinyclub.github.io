@@ -1,32 +1,72 @@
-.panel {
-    border-radius: 0;
+#sidebar {
+    .panel {
+        border-radius: 0;
+        box-shadow: none;
 
-    .panel-heading {
-        background-color: #ffffff;
-        border-bottom: 1px solid #eeeeee;
+        .panel-heading {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eeeeee;
 
-        .panel-title {
-            margin: 0;
-            padding: 0;
+            .panel-title {
+                margin: 0;
+                padding: 0;
+            }
         }
     }
-}
 
-#author_widget {
-    a {
-        color: #333333;
+
+    #author_widget {
+        a {
+            color: #333333;
+        }
+
+        a:hover {
+            color: #aaaaaa;
+        }
+
+        a i {
+            font-size: 130%;
+            margin: 5px;
+        }
+
+        .popover, .popover-title {
+            border-radius: 0;
+        }
     }
 
-    a:hover {
-        color: #aaaaaa;
+    #category_widget {
+        .panel-body {
+            padding: 3px;
+        }
+
+        a {
+            div {
+                padding: 10px;
+                font-size: 1.5rem;
+                color: #333333;
+            }
+        }
+
+        a:hover {
+            div {
+                background-color: #dddddd;
+            }
+        }
     }
 
-    a i {
-        font-size: 130%;
-        margin: 5px;
-    }
+    #sidebar_widget, #recent_posts_widget, #albums_widget {
+        a {
+            div {
+                padding: 10px;
+                font-size: 1.5rem;
+                color: #333333;
+            }
+        }
 
-    .popover, .popover-title {
-        border-radius: 0;
+        a:hover {
+            div {
+                background-color: #dddddd;
+            }
+        }
     }
 }

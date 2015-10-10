@@ -1,0 +1,76 @@
+<div id="related_posts_widget">
+    {% assign url = site.JB.categories_path %}
+    {% assign prompt = "更多分类" %}
+    {% assign truncate = true %}
+    {% assign title = "相关文章" %}
+    {% assign icon = "attach" %}
+    {% assign related_container = "related_container" %}
+    {% assign condition = nil %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading row">
+            <h3 class="panel-title column">{{ title }}</h3>
+            <span class="pull-right clickable"><i class="fa fa-angle-up"></i></span>
+            <!--<span class="pull-right clickable panel-collapsed"><i class="fa fa-angle-down"></i></span>-->
+        </div>
+        <div class="panel-body">
+            <!--<div class="panel-body" style="display: none">-->
+            <div class="row text-center">
+                {% assign hasSimilarTag = '' %}
+                {% assign hasSimilarCat = '' %}
+                {% assign SimilarNum = 0 %}
+                {% for post in site.related_posts %}
+	                {% if page.album and post.album and page.album == post.album %}
+	                    {% continue %}
+	                {% endif %}
+
+	                {% assign matched = false %}
+
+					{% for category in post.categories %}
+					    {% for thiscat in page.categories %}
+                            {% if SimilarNum < site.JB.posts.related_limit and hasSimilarCat.size < 6 and post != page and category == thiscat %}
+                                <a href='{{ site.url }}{{ post.url }}'>
+                                    <div class="column xs24">{{ post.title }}</div>
+                                </a>
+					            {% assign SimilarNum = SimilarNum | plus:1 %}
+					            {% assign matched = true %}
+					            {% break %}
+					        {% endif %}
+					    {% endfor %}
+
+					    {% if matched == true %}
+					        {% break %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if matched == true %}
+                        {% continue %}
+                    {% endif %}
+
+                    {% for tag in post.tags %}
+                        {% for thisTag in page.tags %}
+                            {% if SimilarNum < site.JB.posts.related_limit and post != page and tag == thisTag %}
+                                <a href='{{ site.url }}{{ post.url }}'>
+                                    <div class="column xs24">{{ post.title }}</div>
+                                </a>
+                                {% assign SimilarNum = SimilarNum | plus:1 %}
+					            {% assign matched = true %}
+					            {% break %}
+					        {% endif %}
+                        {% endfor %}
+
+                        {% if matched == true %}
+                            {% break %}
+					    {% endif %}
+                    {% endfor %}
+				  {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% assign more = "" %}
+    {% assign prompt = "" %}
+    {% assign url = "" %}
+    {% assign truncate = false %}
+    {% assign related_container = "" %}
+</div>
