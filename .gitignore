@@ -12,8 +12,6 @@ Thumbs.db
 *~
 *.orig
 *.rej
-*.min.js
-*.min.css
 _data/compress.yml
 pdfs/*
 
