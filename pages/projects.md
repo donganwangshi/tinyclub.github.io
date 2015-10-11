@@ -15,5 +15,5 @@ comments: false
   {% assign articles = site.pages %}
   {% assign condition = 'path' %}
   {% assign value = '/projects/' %}
-  {% include widgets/articles %}
+  {% include themes/tinylab/partials/content/articles.html %}
 </section>
