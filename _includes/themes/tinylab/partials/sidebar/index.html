@@ -26,6 +26,11 @@
 {% if page.group != "home" %}
     {% include themes/tinylab/partials/sidebar/albums.html %}
     {% include themes/tinylab/partials/sidebar/recent_posts.html %}
+    {% include themes/tinylab/partials/sidebar/related_posts.html %}
 {% else %}
     {% include themes/tinylab/partials/sidebar/sidebar_content.html %}
+{% endif %}
+
+{% if page.toc != false %}
+    {% include themes/tinylab/partials/sidebar/toc.html %}
 {% endif %}

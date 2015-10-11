@@ -51,6 +51,24 @@
 #sidebar #author .popover, #sidebar #author .popover-title {
   border-radius: 0; }
 
+#sidebar #toc ul {
+  padding: 0;
+  list-style: none; }
+  #sidebar #toc ul li {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap; }
+    #sidebar #toc ul li a {
+      font-size: 1.5rem;
+      color: #333333; }
+    #sidebar #toc ul li a:hover {
+      color: #aaaaaa; }
+    #sidebar #toc ul li.h3 {
+      margin-left: 20px; }
+    #sidebar #toc ul li.h4 {
+      margin-left: 40px; }
+
 #articles_list .article .article-title a:hover {
   color: #aaaaaa; }
 

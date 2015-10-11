@@ -49,4 +49,36 @@
             border-radius: 0;
         }
     }
+
+    #toc {
+        ul {
+            padding: 0;
+            list-style: none;
+
+            li {
+                margin: 0;
+                padding: 0;
+                overflow:hidden;
+                white-space:nowrap;
+                //text-overflow:ellipsis;
+
+                a {
+                    font-size: 1.5rem;
+                    color: #333333;
+                }
+
+                a:hover {
+                    color: #aaaaaa;
+                }
+
+                &.h3 {
+                    margin-left: 20px;
+                }
+
+                &.h4 {
+                    margin-left: 40px;
+                }
+            }
+        }
+    }
 }
