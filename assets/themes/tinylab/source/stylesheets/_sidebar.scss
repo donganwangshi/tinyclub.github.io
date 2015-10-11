@@ -1,4 +1,5 @@
 #sidebar {
+
     .panel {
         border-radius: 0;
         box-shadow: none;
@@ -14,8 +15,23 @@
         }
     }
 
+    #sidebar_content, #categories, #albums, #recent_posts, #related_posts {
+        a {
+            div {
+                padding: 10px;
+                font-size: 1.5rem;
+                color: #333333;
+            }
+        }
 
-    #author_widget {
+        a:hover {
+            div {
+                background-color: #dddddd;
+            }
+        }
+    }
+
+    #author {
         a {
             color: #333333;
         }
@@ -31,42 +47,6 @@
 
         .popover, .popover-title {
             border-radius: 0;
-        }
-    }
-
-    #category_widget {
-        .panel-body {
-            padding: 3px;
-        }
-
-        a {
-            div {
-                padding: 10px;
-                font-size: 1.5rem;
-                color: #333333;
-            }
-        }
-
-        a:hover {
-            div {
-                background-color: #dddddd;
-            }
-        }
-    }
-
-    #sidebar_widget, #recent_posts_widget, #albums_widget {
-        a {
-            div {
-                padding: 10px;
-                font-size: 1.5rem;
-                color: #333333;
-            }
-        }
-
-        a:hover {
-            div {
-                background-color: #dddddd;
-            }
         }
     }
 }

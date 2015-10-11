@@ -52,7 +52,10 @@
         </div>
 
         <div id="main_wrap" class="container row">
-            <div id="content" class="column s24 m15 l17 xl17">
+            <div id="loader" class="column s24 m15 l17 xl17 text-center" style="display: none;">
+                <img style="margin-top: 200px" src="{{ ASSET_PATH }}/images/loading.gif" alt="请稍侯">
+            </div>
+            <div id="main_content" class="column s24 m15 l17 xl17">
                 {{ content }}
             </div>
             <div id="sidebar" class="column s24 m9  l7  xl7">

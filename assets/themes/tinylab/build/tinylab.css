@@ -16,6 +16,9 @@
   #top_wrap #navbar .navbar-default .navbar-nav > .active > a:focus,
   #top_wrap #navbar .navbar-default .navbar-nav > .active > a:hover {
     background-color: transparent; }
+  #top_wrap #navbar .form-control {
+    box-shadow: none;
+    border-radius: 0; }
 
 #sidebar .panel {
   border-radius: 0;
@@ -27,37 +30,26 @@
       margin: 0;
       padding: 0; }
 
-#sidebar #author_widget a {
+#sidebar #sidebar_content a div, #sidebar #categories a div, #sidebar #albums a div, #sidebar #recent_posts a div, #sidebar #related_posts a div {
+  padding: 10px;
+  font-size: 1.5rem;
   color: #333333; }
 
-#sidebar #author_widget a:hover {
+#sidebar #sidebar_content a:hover div, #sidebar #categories a:hover div, #sidebar #albums a:hover div, #sidebar #recent_posts a:hover div, #sidebar #related_posts a:hover div {
+  background-color: #dddddd; }
+
+#sidebar #author a {
+  color: #333333; }
+
+#sidebar #author a:hover {
   color: #aaaaaa; }
 
-#sidebar #author_widget a i {
+#sidebar #author a i {
   font-size: 130%;
   margin: 5px; }
 
-#sidebar #author_widget .popover, #sidebar #author_widget .popover-title {
+#sidebar #author .popover, #sidebar #author .popover-title {
   border-radius: 0; }
-
-#sidebar #category_widget .panel-body {
-  padding: 3px; }
-
-#sidebar #category_widget a div {
-  padding: 10px;
-  font-size: 1.5rem;
-  color: #333333; }
-
-#sidebar #category_widget a:hover div {
-  background-color: #dddddd; }
-
-#sidebar #sidebar_widget a div, #sidebar #recent_posts_widget a div, #sidebar #albums_widget a div {
-  padding: 10px;
-  font-size: 1.5rem;
-  color: #333333; }
-
-#sidebar #sidebar_widget a:hover div, #sidebar #recent_posts_widget a:hover div, #sidebar #albums_widget a:hover div {
-  background-color: #dddddd; }
 
 #articles_list .article .article-title a:hover {
   color: #aaaaaa; }
