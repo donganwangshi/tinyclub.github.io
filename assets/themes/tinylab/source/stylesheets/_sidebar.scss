@@ -1,4 +1,5 @@
 #sidebar {
+
     .panel {
         border-radius: 0;
         box-shadow: none;
@@ -14,8 +15,23 @@
         }
     }
 
+    #sidebar_content, #categories, #albums, #recent_posts, #related_posts {
+        a {
+            div {
+                padding: 10px;
+                font-size: 1.5rem;
+                color: #333333;
+            }
+        }
 
-    #author_widget {
+        a:hover {
+            div {
+                background-color: #dddddd;
+            }
+        }
+    }
+
+    #author {
         a {
             color: #333333;
         }
@@ -34,39 +50,52 @@
         }
     }
 
-    #category_widget {
-        .panel-body {
-            padding: 3px;
-        }
+    #toc {
+        ul {
+            padding: 0;
+            list-style: none;
 
-        a {
-            div {
-                padding: 10px;
-                font-size: 1.5rem;
-                color: #333333;
+            li {
+                margin: 0;
+                padding: 0;
+                overflow:hidden;
+                white-space:nowrap;
+                //text-overflow:ellipsis;
+
+                a {
+                    font-size: 1.5rem;
+                    color: #333333;
+                }
+
+                a:hover {
+                    color: #aaaaaa;
+                }
+
+                &.toc-active {
+                    a {
+                        color: #aaaaaa;
+                    }
+                }
+                
+                &.h3 {
+                    margin-left: 20px;
+                }
+
+                &.h4 {
+                    margin-left: 40px;
+                }
             }
         }
 
-        a:hover {
-            div {
-                background-color: #dddddd;
-            }
+        &.affix {
+            top: 10px;
+            max-width: 280px;
         }
     }
 
-    #sidebar_widget, #recent_posts_widget, #albums_widget {
-        a {
-            div {
-                padding: 10px;
-                font-size: 1.5rem;
-                color: #333333;
-            }
-        }
-
-        a:hover {
-            div {
-                background-color: #dddddd;
-            }
+    @media screen and (max-width: 768px){
+        #toc {
+            display: none;
         }
     }
 }

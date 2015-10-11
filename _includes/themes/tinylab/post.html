@@ -1,60 +1,107 @@
-<section >
-  <article>
-    <header>
-      <h1 title="{{ page.title }}">{{ page.title }}</h1>
-    </header>
-    <header>
-       {% if page.tagline %}<small>{{ page.tagline }}</small>{% endif %}
-    </header>
+<div id="article">
+    <div class="article-title">
+        <h1 class="font-size-huge">{{ page.title }}</h1>
+    </div>
+    <div class="article-information">
+        <em>{{ page.author }} 创作于 {{ page.date | date: "%Y-%m-%d" }}</em>
+        {% if page.tagline %}<small>{{ page.tagline }}</small>{% endif %}
+    </div>
 
-   <section>
-     {% include widgets/post_header %}
+    <div class="separator size-1"></div>
 
-     <div id="main_content_container">
-     {{ content }}
-     </div>
+    <div class="article_content">
+        {{ content }}
+    </div>
 
-     {% assign related_header = "<h2> Read More: </h2>" %}
-     {% include widgets/related_posts %}
+    <div class="separator size-1"></div>
 
-   </section>
-  </article>
-</section>
+    <div class="article-information">
+        <div class="space size-0"></div>
+        <div class="article-category">
+            {% unless page.categories == empty %}
+            <ul>
+                <li><i class="fa fa-folder"></i></li>
+                {% assign categories_list = page.categories %}
+                {% include JB/categories_list %}
+            </ul>
+            {% endunless %}
+        </div>
+        <div class="article-tag">
+            <ul class="tag-box inline">
+                <li><i class="fa fa-tag"></i></li>
+                {% assign tags_list = page.tags %}
+                {% include JB/tags_list %}
+            </ul>
+        </div>
+    </div>
 
-<section>
-  <hr>
-  {% unless page.categories == empty %}
-  <ul class="tag-box inline">
-    <li><i class="icon-large icon-folder-open"></i></li>
-    {% assign categories_list = page.categories %}
-    {% include JB/categories_list %}
-  </ul>
-  {% endunless %}
+    <div class="separator size-1"></div>
 
-  {% unless page.tags == empty %}
-  <ul class="tag-box inline">
-    <li><i class="icon-large icon-tags"></i></li>
-    {% assign tags_list = page.tags %}
-    {% include JB/tags_list %}
-  </ul>
-  {% endunless %}
+    {% if page.license != false %}
+        <div class="article-license">
+            <p>本作品由 {{ page.author }} 创作，采用 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" title="查看协议详细信息" target="_blank">CC BY-NC-SA 4.0 许可协议</a> 进行许可。</p>
+        </div>
+    {% endif %}
 
-  <hr>
+    <div class="separator size-1"></div>
 
-  {% if page.license != false %}
-  <footer>
-     {% include widgets/copyright %}
-  </footer>
-  {% endif %}
+    <div class="article-sponsor">
+        <table>
+            <tr>
+                <td style="text-align:center;">3.69￥</td>
+                <td width='150px'>{{ sponsor_info }}</td>
+                <td style="text-align:center;">9.68￥</td>
+            </tr>
+            <tr>
+                <td style="text-align:center;">
+                    <img src='/images/sponsor/weixin-pay-admin-3.69.jpg' width='110px' />
+                </td>
+                <td style="text-align:center;"><b>微信扫码<br/><br/>支持原创</b></td>
+                <td style="text-align:center;">
+                    <img src='/images/sponsor/weixin-pay-admin-9.68.jpg' width='110px' />
+                </td>
+            </tr>
+        </table>
+    </div>
 
-  <hr>
+    <div class="separator size-1"></div>
 
-  {% include widgets/sponsor %}
+    <div class="article_pagination" align="center">
+        <ul>
+            {% assign title_length = site.JB.posts.title_length %}
+            {% if page.previous %}
+                <li>
+                    <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">
+                        <i class="fa fa-angle-left"></i> {{ page.previous.title | truncate: title_length, '...'  }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="disabled">
+                    <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">
+                        <i class="fa fa-angle-left"></i> 上一页
+                    </a>
+                </li>
+            {% endif %}
 
-  {% include widgets/prev_next_post %}
+            <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">所有文章</a></li>
 
-</section>
+            {% if page.next %}
+                <li>
+                    <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">
+                        {{ page.next.title | truncate: title_length, '...'  }} <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            {% else %}
+                <li class="disabled">
+                    <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">
+                        下一页 <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
 
-<section id="comments">
-  {% include JB/comments %}
-</section>
+<div id="article_comments">
+    {% include JB/comments %}
+</div>

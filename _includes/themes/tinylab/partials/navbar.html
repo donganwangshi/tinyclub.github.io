@@ -1,3 +1,4 @@
+
 <div id="navbar">
     <nav class="navbar navbar-default color-spry-grey-stone-back">
         <div class="container-fluid container">
@@ -16,12 +17,14 @@
                         height: 30px;
                         width: 30px;
                         background-size: contain;
-                        background-image: url('/images/logo/tinylaborg.png');">
-                    </div>
+                        background-image: url('/images/logo/tinylaborg.png');"></div>
                     <div style="margin: 5px">
                         <span class="color-spry-white">泰晓科技</span>
                     </div>
                 </a>
+                <div class="navbar-brand" style="padding-top: 8px; width: 150px">
+                    {% include themes/tinylab/partials/search_box.html %}
+                </div>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-navbar-collapse">

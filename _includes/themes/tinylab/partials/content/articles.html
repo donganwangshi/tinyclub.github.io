@@ -41,7 +41,7 @@
                 <div class="article-group column">
                     {% if article.group %}{% assign group = article.group %}{% else %}{% assign group = "original" %}{% endif %}
                     {% assign group_name = site.data.groups[group] %}
-                    <i class="fa fa-folder"></i>
+                    <i class="fa fa-paper-plane"></i>
                     <a href="{{ BASE_PATH }}{{ site.JB.groups_path }}#{{ group_name | downcase | replace: ' ','-' }}-ref" title="查看所有 {{group_name}} 文章">{{ group_name }}</a>
                 </div>
 
@@ -54,7 +54,7 @@
                     {% for category in article.categories %}
                         {% assign cnt = cnt | plus:1 %}
                         {% if cnt == 1 %}
-                            <i class="fa fa-tag"></i>
+                            <i class="fa fa-folder"></i>
                         {% endif %}
                         {% if cnt > categories_limit %}
                             {% break %}
