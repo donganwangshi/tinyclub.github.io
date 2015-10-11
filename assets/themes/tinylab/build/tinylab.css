@@ -64,6 +64,8 @@
       color: #333333; }
     #sidebar #toc ul li a:hover {
       color: #aaaaaa; }
+    #sidebar #toc ul li.toc-active a {
+      color: #aaaaaa; }
     #sidebar #toc ul li.h3 {
       margin-left: 20px; }
     #sidebar #toc ul li.h4 {
@@ -141,9 +143,10 @@
     #article .article_pagination ul li i {
       margin-bottom: 7px; }
     #article .article_pagination ul li a {
-      color: #333333; }
+      color: #333333;
+      font-size: 1.5rem; }
     #article .article_pagination ul li a:hover {
-      color: #888888; }
+      color: #aaaaaa; }
     #article .article_pagination ul li.disabled a {
       color: #e4e4e4; }
 

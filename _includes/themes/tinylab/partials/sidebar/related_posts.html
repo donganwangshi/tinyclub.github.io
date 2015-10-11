@@ -20,26 +20,27 @@
                 {% assign hasSimilarCat = '' %}
                 {% assign SimilarNum = 0 %}
                 {% for post in site.related_posts %}
-	                {% if page.album and post.album and page.album == post.album %}
-	                    {% continue %}
-	                {% endif %}
+                    {% if page.album and post.album and page.album == post.album %}
+                        {% continue %}
+                    {% endif %}
 
-	                {% assign matched = false %}
+                    {% assign matched = false %}
 
-					{% for category in post.categories %}
-					    {% for thiscat in page.categories %}
+                    {% for category in post.categories %}
+                        {% for thiscat in page.categories %}
+
                             {% if SimilarNum < site.JB.posts.related_limit and hasSimilarCat.size < 6 and post != page and category == thiscat %}
                                 <a href='{{ site.url }}{{ post.url }}'>
                                     <div class="column xs24">{{ post.title }}</div>
                                 </a>
-					            {% assign SimilarNum = SimilarNum | plus:1 %}
-					            {% assign matched = true %}
-					            {% break %}
-					        {% endif %}
-					    {% endfor %}
+                                {% assign SimilarNum = SimilarNum | plus:1 %}
+                                {% assign matched = true %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
 
-					    {% if matched == true %}
-					        {% break %}
+                        {% if matched == true %}
+                            {% break %}
                         {% endif %}
                     {% endfor %}
 
@@ -54,16 +55,16 @@
                                     <div class="column xs24">{{ post.title }}</div>
                                 </a>
                                 {% assign SimilarNum = SimilarNum | plus:1 %}
-					            {% assign matched = true %}
-					            {% break %}
-					        {% endif %}
+                                {% assign matched = true %}
+                                {% break %}
+                            {% endif %}
                         {% endfor %}
 
                         {% if matched == true %}
                             {% break %}
-					    {% endif %}
+                        {% endif %}
                     {% endfor %}
-				  {% endfor %}
+                  {% endfor %}
             </div>
         </div>
     </div>

@@ -71,6 +71,12 @@
                     color: #aaaaaa;
                 }
 
+                &.toc-active {
+                    a {
+                        color: #aaaaaa;
+                    }
+                }
+                
                 &.h3 {
                     margin-left: 20px;
                 }

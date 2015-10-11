@@ -26,7 +26,9 @@
 {% if page.group != "home" %}
     {% include themes/tinylab/partials/sidebar/albums.html %}
     {% include themes/tinylab/partials/sidebar/recent_posts.html %}
-    {% include themes/tinylab/partials/sidebar/related_posts.html %}
+    {%if page.layout == "post" %}
+        {% include themes/tinylab/partials/sidebar/related_posts.html %}
+    {% endif %}
 {% else %}
     {% include themes/tinylab/partials/sidebar/sidebar_content.html %}
 {% endif %}
