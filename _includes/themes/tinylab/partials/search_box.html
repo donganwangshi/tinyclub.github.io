@@ -2,7 +2,7 @@
     <input id="search_box_query_input" class="form-control" type="text" placeholder="站内搜索">
 </form>
 <script type="text/javascript">
-    $(function ($) {
+    $(function($) {
         var entries = null;
 
         function htmlEscape(s) {
@@ -25,14 +25,20 @@
             if (!match)
                 return null;
             var all = match[0];
-            var year = match[1];  var month = match[2];  var day = match[3];
-            var hour = match[4];  var minute = match[5]; var second = match[6];
+            var year = match[1];
+            var month = match[2];
+            var day = match[3];
+            var hour = match[4];
+            var minute = match[5];
+            var second = match[6];
             var milli = match[7];
-            var z_or_offset = match[8];  var offset_sign = match[9];
-            var offset_hour = match[10]; var offset_minute = match[11];
+            var z_or_offset = match[8];
+            var offset_sign = match[9];
+            var offset_hour = match[10];
+            var offset_minute = match[11];
             if (offset_sign) {
                 var direction = (offset_sign == "+" ? 1 : -1);
-                hour =   parseInt(hour)   + parseInt(offset_hour)   * direction;
+                hour = parseInt(hour) + parseInt(offset_hour) * direction;
                 minute = parseInt(minute) + parseInt(offset_minute) * direction;
             }
             month = parseInt(month) - 1;
@@ -41,8 +47,8 @@
         }
 
         function formatDate(date) {
-            var monthNames = [ "January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December" ];
+            var monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
             return date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
         }
 
@@ -51,7 +57,7 @@
             var rq = new RegExp(q, 'im');
             var rl = /\/([^\/]+)\/$/;
             var rl_html = /\/([^\/]+)\.html$/;
-            for (var i = 0; i < {}; i++) {
+            for (var i = 0; i < entries.length; i++) {
                 var entry = entries[i];
                 var title = $(entry.getElementsByTagName('title')[0]).text();
                 var link = $(entry.getElementsByTagName('link')[0]).attr('href');
@@ -79,12 +85,13 @@
                     var match = matches[i];
                     if (i == 0) {
                         html += '<div class="articles">';
-                        html += '<h2>找到 ' + matches.length + ' 个相符内容</h2>';
+                        html += '<h2 class="section">找到 ' + matches.length + ' 个相符内容</h2>';
                     }
                     html += '<h4><a href="' + match.link + '">' + htmlEscape(match.title) + '</a></h4>';
                     html += '</div>';
                 }
             }
+            $('#loader').hide();
             $('#main_content').html(html);
             $('#main_content').show();
         }
@@ -92,11 +99,14 @@
         $('#search_box').submit(function() {
             var query = $('#search_box_query_input').val();
             $('#main_content').hide();
+            $('#loader').show();
             if (entries == null) {
-                $.ajax({url: '/atom.xml?r=' + (Math.random() * 99999999999), dataType: 'xml', success: function(data) {
-                    entries = data.getElementsByTagName('entry');
-                    findEntries(query);
-                }});
+                $.ajax({
+                    url: '/atom.xml?r=' + (Math.random() * 99999999999), dataType: 'xml', success: function(data) {
+                        entries = data.getElementsByTagName('entry');
+                        findEntries(query);
+                    }
+                });
             } else {
                 findEntries(query);
             }
