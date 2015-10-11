@@ -505,10 +505,15 @@ article section h5 {
     margin-top: 1.2em;
     margin-bottom: 1em;
     color: #333;
-    font-weight: 500
+    font-weight: 600
 }
 article section h1 {
+<<<<<<< HEAD
     font-size: 180%
+=======
+    font-weight: 600;
+    font-size: 120%
+>>>>>>> db96581de07ce040ab9634beadb6b5591e046f9b
 }
 article section h2 {
     color: #a33;
@@ -570,7 +575,7 @@ article header group {
     line-height: .98em
 }
 article header group a {
-    color: #9bd
+    color: #999
 }
 article header group i {
     font-size: 80%;
@@ -633,8 +638,8 @@ article aside {
 
 article header h2,
 #home header h2 {
-    font-weight: 500;
-    font-size: 110%;
+    font-weight: 600;
+    font-size: 100%;
     width: 100%;
     padding-top: 0.1em;
     padding-bottom: 2.1em;
@@ -1225,7 +1230,7 @@ short_prev_next {
         right: 10px;
         margin-top: 15px;
 
-        background: #357;
+        background: #345;
         position: fixed;
 
         border-radius: 5px;
