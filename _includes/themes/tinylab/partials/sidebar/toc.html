@@ -27,6 +27,12 @@
                     return $heading[0].tagName.toLowerCase();
                 }
             });
+
+            $('#toc').affix({
+                offset: {
+                    top:$('#toc').position().top
+                }
+            });
         });
     </script>
 </div>

@@ -80,5 +80,16 @@
                 }
             }
         }
+
+        &.affix {
+            top: 10px;
+            max-width: 280px;
+        }
+    }
+
+    @media screen and (max-width: 768px){
+        #toc {
+            display: none;
+        }
     }
 }
