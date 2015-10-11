@@ -508,12 +508,8 @@ article section h5 {
     font-weight: 600
 }
 article section h1 {
-<<<<<<< HEAD
-    font-size: 180%
-=======
     font-weight: 600;
     font-size: 120%
->>>>>>> db96581de07ce040ab9634beadb6b5591e046f9b
 }
 article section h2 {
     color: #a33;
