@@ -98,29 +98,41 @@
                     {% assign content = author.info | replace:"；","<br/>" | replace:";", "<br/>" %}
                 {% endif %}
 
-            <a id="{{ contact.name }}" href="{{ url }}" type="button"
-                        data-placement="bottom"
-                        data-trigger="hover"
-                        data-html="true"
-                        data-title="{{ title }}"
-                        data-content='
-                            {{ content }}
-                            {% capture qrcode %}{{ contact.name }}-qrcode{% endcapture %}
-                            {% assign has_qrcode = author[qrcode] %}
-                            {% if has_qrcode %}
-                                <div id="qrcode">
-                                    <img style="height: 200px; width:200px" src="/images/{{ contact.name }}/{{ author[contact.name] }}.jpg">
-                                </div>
-                            {% else %}
-                                {% if url != "" %}
-                                    <div id="qrcode_generate"></div>
-                                    <script type="text/javascript"> $(function ($) { $("#qrcode_generate").qrcode({ text: "{{ url }}", width: 200, height: 200 }) });</script>
-                                {% endif %}
-                            {% endif %}
-                        '>
-                    {{ icon }}
-                </a>
+            <a id="author_{{ contact.name }}" class="author-contact" href="{{ url }}" type="button">{{ icon }}</a>
+            <div id="author_{{ contact.name }}_content" class="popover bottom">
+                <div class="arrow"></div>
+                <h3 class="popover-title">{{ title }}</h3>
+                <div class="popover-content">
+                    {{ content }}
+                    {% capture qrcode %}{{ contact.name }}-qrcode{% endcapture %}
+                    {% assign has_qrcode = author[qrcode] %}
+                    {% if has_qrcode %}
+                        <div id="author_{{ contact.name }}_qrcode">
+                            <img style="height: 200px; width:200px" src="/images/{{ contact.name }}/{{ author[contact.name] }}.jpg">
+                        </div>
+                    {% else %}
+                        {% if url != "" %}
+                            <div id="author_{{ contact.name }}_qrcode_generate"></div>
+                            <script type="text/javascript"> $(function ($) { $("#author_{{ contact.name }}_qrcode_generate").qrcode({ text: "{{ url }}", width: 200, height: 200 }) });</script>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            <script>
+                $(function($) {
+                    $('.author-contact').mouseenter(function() {
+                        console.log($('#' + this.id).position().top);
+                        $('#' + this.id +'_content').show();
+                        $('#' + this.id +'_content')
+                                .css('top', $('#' + this.id).position().top + 30)
+                                .css('left', $('#' + this.id).position().left - 100);
+                    });
 
+                    $('.author-contact').mouseleave(function() {
+                        $('#' + this.id + '_content').hide();
+                    });
+                });
+            </script>
             {% endfor %}
             {% assign author = null %}
             {% assign author_name = null %}
