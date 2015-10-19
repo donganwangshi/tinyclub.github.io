@@ -79,6 +79,10 @@
   #sidebar #toc {
     display: none; } }
 
+@media screen and (max-width: 768px) {
+  #sidebar {
+    display: none; } }
+
 #articles_list .article .article-title a:hover {
   color: #aaaaaa; }
 
